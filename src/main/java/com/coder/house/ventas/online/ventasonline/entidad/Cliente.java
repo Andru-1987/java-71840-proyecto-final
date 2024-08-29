@@ -1,80 +1,65 @@
 package com.coder.house.ventas.online.ventasonline.entidad;
 
-import java.io.Serializable;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-
-
-/**
- * The persistent class for the cliente database table.
- * 
- */
 @Entity
-@Table(name="cliente")
-@NamedQuery(name="Cliente.findAll", query="SELECT c FROM Cliente c")
-public class Cliente implements Serializable {
-	private static final long serialVersionUID = 1L;
+@Table(name = "cliente")
+public class Cliente {
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer clienteid;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer clienteid;
 
-	private String apellido;
+    private String apellido;
+    private Integer dni;
+    private String nombre;
 
-	private Integer dni;
+    public Cliente() {
+    }
 
-	private String nombre;
+    public Integer getClienteid() {
+        return this.clienteid;
+    }
 
-	public Cliente() {
-	}
+    public void setClienteid(Integer clienteid) {
+        this.clienteid = clienteid;
+    }
 
-	public Integer getClienteid() {
-		return this.clienteid;
-	}
+    public String getApellido() {
+        return this.apellido;
+    }
 
-	public void setClienteid(Integer clienteid) {
-		this.clienteid = clienteid;
-	}
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
 
-	public String getApellido() {
-		return this.apellido;
-	}
+    public Integer getDni() {
+        return this.dni;
+    }
 
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
+    public void setDni(Integer dni) {
+        this.dni = dni;
+    }
 
-	public Integer getDni() {
-		return this.dni;
-	}
+    public String getNombre() {
+        return this.nombre;
+    }
 
-	public void setDni(Integer dni) {
-		this.dni = dni;
-	}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-	public String getNombre() {
-		return this.nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Cliente [");
-		if (clienteid != null)
-			builder.append("clienteid=").append(clienteid).append(", ");
-		if (dni != null)
-			builder.append("dni=").append(dni);
-		builder.append("]");
-		return builder.toString();
-	}
-
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "clienteid=" + clienteid +
+                ", apellido='" + apellido + '\'' +
+                ", dni=" + dni +
+                ", nombre='" + nombre + '\'' +
+                '}';
+    }
 }
